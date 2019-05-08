@@ -12,17 +12,17 @@ import { eventBus } from '@/main.js';
 import HotelService from '@/services/HotelService.js';
 
 export default {
-  name: 'booking',
-  
+  name: 'bookingItem',
+
   props: ['booking'],
-  
-  methods(){
-    deleteBooking = function(id){
-      HotelService.iNSERTFUNCTIONNAMEHERE!!(id)
-      .then((res) => eventBus.$emit('refresh-bookings', res))
+
+  methods: {
+    deleteBooking(id){
+      HotelService.deleteBooking(id)
+      .then((res) => eventBus.$emit('refresh-bookings'))
     }
   }
-  
+
 }
 </script>
 
