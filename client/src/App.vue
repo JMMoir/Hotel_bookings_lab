@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import BookingForm from '@/components/Booking.vue';
+import BookingForm from '@/components/BookingForm.vue';
 import BookingsGrid from '@/components/BookingsGrid.vue';
 
 export default {

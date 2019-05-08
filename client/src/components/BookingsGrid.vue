@@ -35,7 +35,7 @@ export default {
   mounted(){
     this.fetchBookings();
 
-    eventBus.$on('refresh-bookings', this.fetchBookings());
+    eventBus.$on('refresh-bookings', this.fetchBookings);
   }
 }
 

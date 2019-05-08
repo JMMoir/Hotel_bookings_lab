@@ -3,10 +3,10 @@
     <form class="" action="index.html" method="post" v-on:submit="handleSubmit">
 
       <label for="name">Name: </label>
-      <input type="text" name="name" v-model="name">
+      <input type="text" name="name" v-model="name" required>
 
       <label for="email">Email: </label>
-      <input type="text" name="email" v-model="email">
+      <input type="text" name="email" v-model="email" required>
 
       <label for="checked_in_status">Checked In?</label>
       <input type="checkbox" name="checked_in_status" value="true" v-model="checkedInStatus">
