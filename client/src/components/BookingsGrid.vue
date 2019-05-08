@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div id='grid'>
     <booking v-for="(booking, index) in bookings" v-bind:booking="booking" v-bind:index="index"/>
   </div>
 </template>
@@ -45,4 +45,6 @@ export default {
 
 
 <style lang="css" scoped>
+
+
 </style>
