@@ -1,9 +1,16 @@
 <template lang="html">
   <div>
+    
     <h4>{{booking.name}}</h4>
     <p>{{booking.email}}</p>
     <p v-if="booking.checkedInStatus">Customer Checked In</p>
-    <button type="button" name="delete" v-on:click="deleteBooking(booking._id)">Delete Booking</button>
+    <p v-if="!booking.checkedInStatus">Customer Not Checked In</p>
+    
+    <button type="button" name="update" v-on:click="updateBooking(booking)">
+      Change Check In Status</button>
+    <button type="button" name="delete" v-on:click="deleteBooking(booking._id)">
+      Delete Booking</button>
+      
   </div>
 </template>
 
@@ -17,8 +24,19 @@ export default {
   props: ['booking'],
 
   methods: {
+    
     deleteBooking(id){
       HotelService.deleteBooking(id)
+      .then((res) => eventBus.$emit('refresh-bookings'))
+    },
+    
+    updateBooking(booking){
+      if (booking.checkedInStatus){
+        booking.checkedInStatus = false
+      }
+      else {booking.checkedInStatus = true}
+      
+      HotelService.updateBooking(booking)
       .then((res) => eventBus.$emit('refresh-bookings'))
     }
   }

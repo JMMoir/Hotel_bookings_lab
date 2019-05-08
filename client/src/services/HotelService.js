@@ -23,6 +23,12 @@ export default{
     })
   },
   
+  updateBooking(booking){
+    return fetch(baseURL + booking._id, {
+      method: 'PUT'
+    })
+  }
+  
   
   
 }
