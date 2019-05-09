@@ -48,4 +48,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+form {
+  color: white;
+}
 </style>
