@@ -23,10 +23,13 @@ export default{
     })
   },
   
-  updateBooking(booking){
-    return fetch(baseURL + booking._id, {
-      method: 'PUT'
+  updateBooking(booking, id){
+    return fetch(baseURL + id, {
+      method: 'PUT',
+      body: JSON.stringify(booking),
+      headers: { 'Content-Type': 'application/json'}
     })
+    .then(res => res.json())
   }
   
   

@@ -6,7 +6,7 @@
     <p v-if="booking.checkedInStatus">Customer Checked In</p>
     <p v-if="!booking.checkedInStatus">Customer Not Checked In</p>
     
-    <button type="button" name="update" v-on:click="updateBooking(booking)">
+    <button type="button" name="update" v-on:click="updateBooking(booking._id)">
       Change Check In Status</button>
     <button type="button" name="delete" v-on:click="deleteBooking(booking._id)">
       Delete Booking</button>
@@ -30,18 +30,25 @@ export default {
       .then((res) => eventBus.$emit('refresh-bookings'))
     },
     
-    updateBooking(booking){
-      if (booking.checkedInStatus){
-        booking.checkedInStatus = false
+    updateBooking(id){
+      const updatedBooking = {
+        name: this.booking.name,
+        email: this.booking.email,
+        checkedInStatus: this.booking.checkedInStatus
       }
-      else {booking.checkedInStatus = true}
       
-      HotelService.updateBooking(booking)
+      if (updatedBooking.checkedInStatus){
+        updatedBooking.checkedInStatus = false
+      }
+      else {updatedBooking.checkedInStatus = true}
+      
+      HotelService.updateBooking(id, updatedBooking)
       .then((res) => eventBus.$emit('refresh-bookings'))
     }
   }
-
 }
+
+
 </script>
 
 <style lang="css" scoped>
